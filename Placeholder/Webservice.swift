@@ -27,10 +27,10 @@ public enum WebserviceError: Error {
     case other
 }
 
-func logError<A>(_ result: Result<A>) {
-    guard case let .error(e) = result else { return }
-    assert(false, "\(e)")
-}
+//func logError<A>(_ result: Result<A>) {
+//    guard case let .error(e) = result else { return }
+//    assert(false, "\(e)")
+//}
 
 public final class Webservice {
 
@@ -48,17 +48,20 @@ public final class Webservice {
     }
 
     /// Loads a resource. The completion handler is always called on the main queue.
-    public func load<A>(_ resource: Resource<A>, completion: @escaping (Result<A>) -> () = logError) {
-        URLSession.shared.dataTask(with: URLRequest(resource: resource)) { (data, response, _) in
-            let result: Result<A>
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-                result = Result.error(WebserviceError.notAuthenticated)
-            } else {
-                let parsed = data.flatMap(resource.parse)
-                result = Result(parsed, or: WebserviceError.other)
-            }
-            DispatchQueue.main.async { completion(result) }
-            }.resume()
+    public func load<A>(_ resource: Resource<A>) -> Future<A> {
+        return Future { completion in
+            URLSession.shared.dataTask(with: URLRequest(resource: resource)) { (data, response, _) in
+                let result: Result<A>
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
+                    result = Result.error(WebserviceError.notAuthenticated)
+                } else {
+                    let parsed = data.flatMap(resource.parse)
+                    result = Result(parsed, or: WebserviceError.other)
+                }
+                DispatchQueue.main.async { completion(result) }
+                }.resume()
+        }
+
     }
 
 }

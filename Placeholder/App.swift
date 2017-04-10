@@ -33,7 +33,13 @@ final class App {
         usersViewController.didSelect = showAlbums
 
         // Grab the users asynchronously from the network using ReactiveJSON.
-        webservice.load(User.all) { result in
+//        webservice.load(User.all) { result in
+//            if case .success(let users) = result {
+//                usersViewController.items = users
+//            }
+//        }
+
+        webservice.load(User.all).onResult { result in
             if case .success(let users) = result {
                 usersViewController.items = users
             }
@@ -66,7 +72,7 @@ final class App {
         albumsViewController.didTapButton = { self.showProfile(for: user) }
 
         // Grab the albums for the user asynchronously from the network using ReactiveJSON.
-        webservice.load(user.albums) { result in
+        webservice.load(user.albums).onResult { result in
             if case .success(let albums) = result {
                 albumsViewController.items = albums
             }
@@ -113,7 +119,7 @@ final class App {
 
             // Asyncronously load the (possibly cached) image. Update on the 
             // main queue.
-            webservice.load(photo.thumbnailResource) { result in
+            webservice.load(photo.thumbnailResource).onResult { result in
                 if case .success(let image) = result {
                     DispatchQueue.main.async {
                         cell.imageView?.image = image
@@ -131,7 +137,7 @@ final class App {
         thumbnailsViewController.didSelect = showPhoto
 
         // Grab the photos in the album asynchronously from the network.
-        webservice.load(album.photos) { result in
+        webservice.load(album.photos).onResult { result in
             if case .success(let photos) = result {
                 thumbnailsViewController.items = photos
             }
@@ -156,7 +162,7 @@ final class App {
 
         // Asyncronously load the (possibly cached) image. Update on the
         // main queue.
-        webservice.load(photo.imageResource) { result in
+        webservice.load(photo.imageResource).onResult { result in
             if case .success(let image) = result {
                 DispatchQueue.main.async {
                     photoViewController.photoImage = image
