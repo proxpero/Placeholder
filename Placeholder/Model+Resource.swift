@@ -8,44 +8,27 @@
 
 import Foundation
 
-private func baseURL(with scheme: String, host: String, path: String? = nil) -> String {
-    var result = "\(scheme)://\(host)"
-    if let path = path {
-        result += "/\(path)"
-    }
-    return result
-}
-
 extension User {
 
-    static var allURLString: String {
-        return baseURL(with: "https", host: "jsonplaceholder.typicode.com").appending("/users")
-    }
-
-    static var allURL: URL {
-        return URL(string: allURLString)!
-    }
-
     static let all = Resource<[User]>(
-        url: User.allURL,
+        url: Route.users.all,
         parseJSON: { json  in
             guard let dicts = json as? [JSONDictionary] else { return nil }
             return dicts.flatMap(User.init)
     })
 
     static func user(withId id: Int) -> Resource<User> {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!
-        return Resource<User>(url: url, parseJSON: { json in
-            guard let dict = json as? JSONDictionary else { return nil }
-            return User(json: dict)
+        return Resource<User>(
+            url: Route.users.url(withId: id),
+            parseJSON: { json in
+                guard let dict = json as? JSONDictionary else { return nil }
+                return User(json: dict)
         })
     }
 
     var albums: Resource<[Album]> {
-        let x = baseURL(with: "https", host: "jsonplaceholder.typicode.com") + "/albums?userId=\(id)"
-        let url = URL(string: x)!
         return Resource<[Album]>(
-            url: url,
+            url: Route.users.url(withId: id).appending(.albums),
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Album.init)
@@ -53,9 +36,8 @@ extension User {
     }
 
     var posts: Resource<[Post]> {
-        let url = URL(string: "jsonplaceholder.typicode.com/posts?userId=\(id)")!
         return Resource<[Post]>(
-            url: url,
+            url: Route.users.url(withId: id).appending(.posts),
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Post.init)
@@ -63,9 +45,8 @@ extension User {
     }
 
     var todos: Resource<[Todo]> {
-        let url = URL(string: "jsonplaceholder.typicode.com/todos?userId=\(id)")!
         return Resource<[Todo]>(
-            url: url,
+            url: Route.users.url(withId: id).appending(.todos),
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Todo.init)
@@ -77,9 +58,8 @@ extension User {
 extension Album {
 
     var photos: Resource<[Photo]> {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/photos?albumId=\(id)")!
         return Resource<[Photo]>(
-            url: url,
+            url: Route.albums.url(withId: id).appending(.photos),
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Photo.init)
@@ -90,9 +70,8 @@ extension Album {
 extension Post {
 
     var comments: Resource<[Comment]> {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/comments?postId=\(id)")!
         return Resource<[Comment]>(
-            url: url,
+            url: Route.posts.url(withId: id).appending(.comments),
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Comment.init)

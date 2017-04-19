@@ -6,7 +6,7 @@ private let host = "jsonplaceholder.typicode.com"
 /// A class to encapsulate the logic involved in presenting view controllers
 /// and wiring view models to views. This is nice because it keeps the view
 /// controllers isolated and dumb.
-final class App {
+final class AppCoordinator {
 
     // Keep a reference to the window's navigation controller.
     var navigationController: UINavigationController!
@@ -22,6 +22,7 @@ final class App {
         }
         self.webservice = CachedWebservice(ws)
 
+        // Create an ItemsViewController for users.
         let usersViewController = ItemsViewController([]) { (cell: UserCell, user: User) in
             cell.textLabel?.text = user.name
         }
@@ -32,13 +33,7 @@ final class App {
         // Set a callback to display a selected album.
         usersViewController.didSelect = showAlbums
 
-        // Grab the users asynchronously from the network using ReactiveJSON.
-//        webservice.load(User.all) { result in
-//            if case .success(let users) = result {
-//                usersViewController.items = users
-//            }
-//        }
-
+        // Grab the users asynchronously from the network.
         webservice.load(User.all).onResult { result in
             if case .success(let users) = result {
                 usersViewController.items = users

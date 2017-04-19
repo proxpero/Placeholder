@@ -13,7 +13,7 @@
 		5205CEFD1E9670AF004B57D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5205CEFB1E9670AF004B57D1 /* LaunchScreen.storyboard */; };
 		5205CF081E9670AF004B57D1 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF071E9670AF004B57D1 /* PlaceholderTests.swift */; };
 		5205CF631E9675AB004B57D1 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF621E9675AB004B57D1 /* UIKit+Extensions.swift */; };
-		5205CF651E9675B8004B57D1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF641E9675B8004B57D1 /* App.swift */; };
+		5205CF651E9675B8004B57D1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF641E9675B8004B57D1 /* AppCoordinator.swift */; };
 		5205CF6D1E967637004B57D1 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF661E967637004B57D1 /* Album.swift */; };
 		5205CF6F1E967637004B57D1 /* Model+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF681E967637004B57D1 /* Model+Equatable.swift */; };
 		5205CF711E967637004B57D1 /* Model+TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF6A1E967637004B57D1 /* Model+TableViewCell.swift */; };
@@ -44,6 +44,7 @@
 		5255E60B1E99E98C009A39B7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E6091E99E76D009A39B7 /* Post.swift */; };
 		5255E60D1E99FE19009A39B7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E60C1E99FE19009A39B7 /* Comment.swift */; };
 		5255E6131E9BDE56009A39B7 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E6121E9BDE56009A39B7 /* Future.swift */; };
+		52F062991EA7A52F000E7606 /* Model+Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F062981EA7A52F000E7606 /* Model+Routing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +81,7 @@
 		5205CF071E9670AF004B57D1 /* PlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTests.swift; sourceTree = "<group>"; };
 		5205CF091E9670AF004B57D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5205CF621E9675AB004B57D1 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
-		5205CF641E9675B8004B57D1 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		5205CF641E9675B8004B57D1 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5205CF661E967637004B57D1 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Album.swift; path = Placeholder/Album.swift; sourceTree = "<group>"; };
 		5205CF681E967637004B57D1 /* Model+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+Equatable.swift"; path = "Placeholder/Model+Equatable.swift"; sourceTree = "<group>"; };
 		5205CF6A1E967637004B57D1 /* Model+TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+TableViewCell.swift"; path = "Placeholder/Model+TableViewCell.swift"; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		5255E6091E99E76D009A39B7 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Placeholder/Post.swift; sourceTree = "<group>"; };
 		5255E60C1E99FE19009A39B7 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Placeholder/Comment.swift; sourceTree = "<group>"; };
 		5255E6121E9BDE56009A39B7 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		52F062981EA7A52F000E7606 /* Model+Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+Routing.swift"; path = "Placeholder/Model+Routing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,7 @@
 		5205CEF11E9670AF004B57D1 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
-				5205CF641E9675B8004B57D1 /* App.swift */,
+				5205CF641E9675B8004B57D1 /* AppCoordinator.swift */,
 				5255E5FD1E986D47009A39B7 /* Result.swift */,
 				5255E6121E9BDE56009A39B7 /* Future.swift */,
 				5205CF621E9675AB004B57D1 /* UIKit+Extensions.swift */,
@@ -198,6 +200,7 @@
 				5205CF681E967637004B57D1 /* Model+Equatable.swift */,
 				5205CF6A1E967637004B57D1 /* Model+TableViewCell.swift */,
 				5255DD8F1E96B880009A39B7 /* Model+Resource.swift */,
+				52F062981EA7A52F000E7606 /* Model+Routing.swift */,
 				5255DD911E96B902009A39B7 /* Model+JSONDecodable.swift */,
 			);
 			name = Model;
@@ -361,13 +364,14 @@
 				5205CEF31E9670AF004B57D1 /* AppDelegate.swift in Sources */,
 				5255DD901E96B880009A39B7 /* Model+Resource.swift in Sources */,
 				5205CF721E967637004B57D1 /* Photo.swift in Sources */,
+				52F062991EA7A52F000E7606 /* Model+Routing.swift in Sources */,
 				5205CF711E967637004B57D1 /* Model+TableViewCell.swift in Sources */,
 				5255E5FE1E986D47009A39B7 /* Result.swift in Sources */,
 				5255E6041E99D224009A39B7 /* md5.swift in Sources */,
 				5255E60B1E99E98C009A39B7 /* Post.swift in Sources */,
 				5255E6001E986E7D009A39B7 /* Cache.swift in Sources */,
 				5205CF791E9676AE004B57D1 /* PhotoViewController.swift in Sources */,
-				5205CF651E9675B8004B57D1 /* App.swift in Sources */,
+				5205CF651E9675B8004B57D1 /* AppCoordinator.swift in Sources */,
 				5255DD8E1E96B7EA009A39B7 /* HttpMethod.swift in Sources */,
 				5205CF781E9676AE004B57D1 /* ItemsViewController.swift in Sources */,
 				5255DD941E96B917009A39B7 /* JSONDecodable.swift in Sources */,
