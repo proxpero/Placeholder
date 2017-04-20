@@ -1,5 +1,5 @@
 # Placeholder
-An iOS app that consumes [typicode](https://twitter.com/typicode)'s [RESTful jsonplaceholder API](http://jsonplaceholder.typicode.com). 
+An iOS client of [typicode](https://twitter.com/typicode)'s [RESTful jsonplaceholder API](http://jsonplaceholder.typicode.com). 
 
 ## Features:
 - A simple decoupled webservice layer
