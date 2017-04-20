@@ -5,7 +5,7 @@ This code builds on many ideas from the Swift community, but especially on those
 
 ## Features:
 - A simple, decoupled webservice layer
-  - Asynchronous response handling.
+  - Well-behaved asynchronous response handling with Futures.
   - Caching.
   - Typesafe routing.
 - Generic UITableViewControllers.
