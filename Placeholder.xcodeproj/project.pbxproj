@@ -22,7 +22,6 @@
 		5205CF781E9676AE004B57D1 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF751E9676AE004B57D1 /* ItemsViewController.swift */; };
 		5205CF791E9676AE004B57D1 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF761E9676AE004B57D1 /* PhotoViewController.swift */; };
 		5205CF7A1E9676AE004B57D1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF771E9676AE004B57D1 /* UserProfileViewController.swift */; };
-		5205CF7D1E967BDC004B57D1 /* Model+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF7C1E967BDC004B57D1 /* Model+Endpoint.swift */; };
 		5205CF7F1E967C34004B57D1 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF7E1E967C34004B57D1 /* Webservice.swift */; };
 		5205CF811E967C5E004B57D1 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF801E967C5E004B57D1 /* Resource.swift */; };
 		5255DD8E1E96B7EA009A39B7 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255DD8D1E96B7EA009A39B7 /* HttpMethod.swift */; };
@@ -90,7 +89,6 @@
 		5205CF751E9676AE004B57D1 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsViewController.swift; path = Placeholder/ItemsViewController.swift; sourceTree = "<group>"; };
 		5205CF761E9676AE004B57D1 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoViewController.swift; path = Placeholder/PhotoViewController.swift; sourceTree = "<group>"; };
 		5205CF771E9676AE004B57D1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = Placeholder/UserProfileViewController.swift; sourceTree = "<group>"; };
-		5205CF7C1E967BDC004B57D1 /* Model+Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Endpoint.swift"; sourceTree = "<group>"; };
 		5205CF7E1E967C34004B57D1 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		5205CF801E967C5E004B57D1 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		5255DD8D1E96B7EA009A39B7 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				5255E6011E99255A009A39B7 /* FileStorage.swift */,
 				5205CF7E1E967C34004B57D1 /* Webservice.swift */,
 				5255E5FA1E986B3D009A39B7 /* CachedWebservice.swift */,
-				5205CF7C1E967BDC004B57D1 /* Model+Endpoint.swift */,
 				5255DD8D1E96B7EA009A39B7 /* HttpMethod.swift */,
 				5255DD931E96B917009A39B7 /* JSONDecodable.swift */,
 			);
@@ -385,7 +382,6 @@
 				5255E5FC1E986C7E009A39B7 /* CachedWebservice.swift in Sources */,
 				5255E6131E9BDE56009A39B7 /* Future.swift in Sources */,
 				5205CF731E967637004B57D1 /* User.swift in Sources */,
-				5205CF7D1E967BDC004B57D1 /* Model+Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

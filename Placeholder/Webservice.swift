@@ -27,25 +27,13 @@ public enum WebserviceError: Error {
     case other
 }
 
-//func logError<A>(_ result: Result<A>) {
-//    guard case let .error(e) = result else { return }
-//    assert(false, "\(e)")
-//}
-
 public final class Webservice {
 
+    // Not yet implemented.
     public var authenticationToken: String?
 
-    // The base URL.
-    public let baseUrl: URL
-
-    /// Initialize a `Webservice` with a scheme and a host. The default for
-    /// `scheme` is `https`. Returns `nil` if a url cannot be created from
-    /// concatenating `scheme` and `host`.
-    public init?(scheme: String = "https", host: String) {
-        guard let url = URL(string: "\(scheme)://\(host)") else { return nil }
-        baseUrl = url
-    }
+    /// Initialize a `Webservice`.
+    public init() {}
 
     /// Loads a resource. The completion handler is always called on the main queue.
     public func load<A>(_ resource: Resource<A>) -> Future<A> {
@@ -61,7 +49,6 @@ public final class Webservice {
                 DispatchQueue.main.async { completion(result) }
                 }.resume()
         }
-
     }
-
+    
 }

@@ -19,7 +19,7 @@ extension User {
 
     static func user(withId id: Int) -> Resource<User> {
         return Resource<User>(
-            url: Route.users.url(withId: id),
+            url: Route.users[id],
             parseJSON: { json in
                 guard let dict = json as? JSONDictionary else { return nil }
                 return User(json: dict)
@@ -28,7 +28,7 @@ extension User {
 
     var albums: Resource<[Album]> {
         return Resource<[Album]>(
-            url: Route.users.url(withId: id).appending(.albums),
+            url: Route.users[id][.albums],
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Album.init)
@@ -37,7 +37,7 @@ extension User {
 
     var posts: Resource<[Post]> {
         return Resource<[Post]>(
-            url: Route.users.url(withId: id).appending(.posts),
+            url: Route.users[id][.posts],
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Post.init)
@@ -46,7 +46,7 @@ extension User {
 
     var todos: Resource<[Todo]> {
         return Resource<[Todo]>(
-            url: Route.users.url(withId: id).appending(.todos),
+            url: Route.users[id][.todos],
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Todo.init)
@@ -59,7 +59,7 @@ extension Album {
 
     var photos: Resource<[Photo]> {
         return Resource<[Photo]>(
-            url: Route.albums.url(withId: id).appending(.photos),
+            url: Route.albums[id][.photos],
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Photo.init)
@@ -71,7 +71,7 @@ extension Post {
 
     var comments: Resource<[Comment]> {
         return Resource<[Comment]>(
-            url: Route.posts.url(withId: id).appending(.comments),
+            url: Route.posts[id][.comments],
             parseJSON: { json in
                 guard let dicts = json as? [JSONDictionary] else { return nil }
                 return dicts.flatMap(Comment.init)

@@ -1,8 +1,6 @@
 
 import UIKit
 
-private let host = "jsonplaceholder.typicode.com"
-
 /// A class to encapsulate the logic involved in presenting view controllers
 /// and wiring view models to views. This is nice because it keeps the view
 /// controllers isolated and dumb.
@@ -11,19 +9,15 @@ final class AppCoordinator {
     // Keep a reference to the window's navigation controller.
     var navigationController: UINavigationController!
 
-    // A cache to cut down on unnecessary latency.
-//    private var imageCache: Dictionary<String, UIImage> = [:]
+    // The webservice will automatically cache responses it makes on the network.
     private let webservice: CachedWebservice
 
     init(window: UIWindow) {
 
-        guard let ws = Webservice(host: host) else {
-            fatalError("Could not create webservice from host \(host)")
-        }
-        self.webservice = CachedWebservice(ws)
+        self.webservice = CachedWebservice(Webservice())
 
         // Create an ItemsViewController for users.
-        let usersViewController = ItemsViewController([]) { (cell: UserCell, user: User) in
+        let usersViewController = ItemsViewController() { (cell: UserCell, user: User) in
             cell.textLabel?.text = user.name
         }
 
@@ -52,7 +46,7 @@ final class AppCoordinator {
 
         // Initialize the view controller with 0 albums, a 'profile' navigation item,
         // and a function to configure the album cells with an album.
-        let albumsViewController = ItemsViewController([], navigationItemTitle: "Profile") { (cell: AlbumCell, album: Album) in
+        let albumsViewController = ItemsViewController(navigationItemTitle: "Profile") { (cell: AlbumCell, album: Album) in
             cell.textLabel?.text = album.title
         }
 

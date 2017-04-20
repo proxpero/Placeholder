@@ -13,13 +13,6 @@ private let host = "jsonplaceholder.typicode.com"
 
 enum Route: String {
 
-    private var baseURL: URL {
-        guard let result = URL(string: scheme + "://" + host) else {
-            fatalError("Could not create base url from scheme: \(scheme) and host: \(host)")
-        }
-        return result
-    }
-
     case users
     case albums
     case photos
@@ -27,26 +20,34 @@ enum Route: String {
     case comments
     case todos
 
-    var endpoint: String {
-        return self.rawValue
-    }
-
-    func path(withId id: Int) -> String {
-        return endpoint + "/\(id)"
+    private static var baseURL: URL {
+        guard let result = URL(string: scheme + "://" + host) else {
+            fatalError("Could not create base url from scheme: \(scheme) and host: \(host)")
+        }
+        return result
     }
 
     var all: URL {
-        return baseURL.appendingPathComponent(endpoint)
+        return Route.baseURL.appendingPathComponent(self.endpoint)
     }
 
-    func url(withId id: Int) -> URL {
-        return baseURL.appendingPathComponent(path(withId: id))
+    subscript(id: Int) -> URL {
+        return all.appendingPathComponent("\(id)")
+    }
+
+    var endpoint: String {
+        return self.rawValue
     }
 
 }
 
 extension URL {
-    func appending(_ routeEndpoint: Route) -> URL {
-        return self.appendingPathComponent(routeEndpoint.endpoint)
+
+    subscript(endpoint: Route) -> URL {
+        return self.appendingPathComponent(endpoint.rawValue)
+    }
+
+    subscript(id: Int) -> URL {
+        return self.appendingPathComponent("\(id)")
     }
 }
