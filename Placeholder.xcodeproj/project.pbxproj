@@ -24,9 +24,9 @@
 		5205CF7A1E9676AE004B57D1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF771E9676AE004B57D1 /* UserProfileViewController.swift */; };
 		5205CF7F1E967C34004B57D1 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF7E1E967C34004B57D1 /* Webservice.swift */; };
 		5205CF811E967C5E004B57D1 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205CF801E967C5E004B57D1 /* Resource.swift */; };
+		522874BE1EA905C800800877 /* Model+JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522874BD1EA905C800800877 /* Model+JSONDecodable.swift */; };
 		5255DD8E1E96B7EA009A39B7 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255DD8D1E96B7EA009A39B7 /* HttpMethod.swift */; };
 		5255DD901E96B880009A39B7 /* Model+Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255DD8F1E96B880009A39B7 /* Model+Resource.swift */; };
-		5255DD921E96B902009A39B7 /* Model+JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255DD911E96B902009A39B7 /* Model+JSONDecodable.swift */; };
 		5255DD941E96B917009A39B7 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255DD931E96B917009A39B7 /* JSONDecodable.swift */; };
 		5255DDDA1E96DF0E009A39B7 /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 5255DDD51E96DF0E009A39B7 /* Users.json */; };
 		5255DDDB1E96DF0E009A39B7 /* Albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 5255DDD61E96DF0E009A39B7 /* Albums.json */; };
@@ -91,9 +91,9 @@
 		5205CF771E9676AE004B57D1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = Placeholder/UserProfileViewController.swift; sourceTree = "<group>"; };
 		5205CF7E1E967C34004B57D1 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		5205CF801E967C5E004B57D1 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		522874BD1EA905C800800877 /* Model+JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+JSONDecodable.swift"; path = "Placeholder/Model+JSONDecodable.swift"; sourceTree = "<group>"; };
 		5255DD8D1E96B7EA009A39B7 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		5255DD8F1E96B880009A39B7 /* Model+Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+Resource.swift"; path = "Placeholder/Model+Resource.swift"; sourceTree = "<group>"; };
-		5255DD911E96B902009A39B7 /* Model+JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+JSONDecodable.swift"; sourceTree = "<group>"; };
 		5255DD931E96B917009A39B7 /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		5255DDD51E96DF0E009A39B7 /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		5255DDD61E96DF0E009A39B7 /* Albums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Albums.json; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 				5205CF6A1E967637004B57D1 /* Model+TableViewCell.swift */,
 				5255DD8F1E96B880009A39B7 /* Model+Resource.swift */,
 				52F062981EA7A52F000E7606 /* Model+Routing.swift */,
-				5255DD911E96B902009A39B7 /* Model+JSONDecodable.swift */,
+				522874BD1EA905C800800877 /* Model+JSONDecodable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,11 +371,11 @@
 				5205CF651E9675B8004B57D1 /* AppCoordinator.swift in Sources */,
 				5255DD8E1E96B7EA009A39B7 /* HttpMethod.swift in Sources */,
 				5205CF781E9676AE004B57D1 /* ItemsViewController.swift in Sources */,
+				522874BE1EA905C800800877 /* Model+JSONDecodable.swift in Sources */,
 				5255DD941E96B917009A39B7 /* JSONDecodable.swift in Sources */,
 				5205CF7F1E967C34004B57D1 /* Webservice.swift in Sources */,
 				5205CF7A1E9676AE004B57D1 /* UserProfileViewController.swift in Sources */,
 				5205CF6D1E967637004B57D1 /* Album.swift in Sources */,
-				5255DD921E96B902009A39B7 /* Model+JSONDecodable.swift in Sources */,
 				5255E6061E99DDD0009A39B7 /* Todo.swift in Sources */,
 				5255E60D1E99FE19009A39B7 /* Comment.swift in Sources */,
 				5205CF6F1E967637004B57D1 /* Model+Equatable.swift in Sources */,
