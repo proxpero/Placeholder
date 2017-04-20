@@ -1,5 +1,5 @@
 # Placeholder
-An iOS client of [typicode](https://twitter.com/typicode)'s [RESTful jsonplaceholder API](http://jsonplaceholder.typicode.com). 
+An iOS client of [typicode](https://twitter.com/typicode)'s [RESTful jsonplaceholder API](http://jsonplaceholder.typicode.com). I made this to work out some ideas for making a **simple** client for RESTful APIs. 
 
 ## Features:
 - A simple decoupled webservice layer
