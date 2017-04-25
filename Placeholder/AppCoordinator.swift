@@ -1,6 +1,8 @@
 
 import UIKit
 
+let urlProvider = URLProvider(host: "jsonplaceholder.typicode.com")
+
 /// A class to encapsulate the logic involved in presenting view controllers
 /// and wiring view models to views. This is nice because it keeps the view
 /// controllers isolated and dumb.
@@ -14,6 +16,7 @@ final class AppCoordinator {
 
     init(window: UIWindow) {
 
+        // Create a cached webservice.
         self.webservice = CachedWebservice(Webservice())
 
         // Create an ItemsViewController for users.
@@ -30,6 +33,9 @@ final class AppCoordinator {
         // Grab the users asynchronously from the network.
         webservice.load(User.all).onResult { result in
             if case .success(let users) = result {
+                // If the users are there, populate the `items` property
+                // of the generic view controller, which will reload the 
+                // table view.
                 usersViewController.items = users
             }
         }

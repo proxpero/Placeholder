@@ -8,9 +8,6 @@
 
 import Foundation
 
-private let scheme = "https"
-private let host = "jsonplaceholder.typicode.com"
-
 enum Route: String {
 
     case users
@@ -20,15 +17,8 @@ enum Route: String {
     case comments
     case todos
 
-    private static var baseURL: URL {
-        guard let result = URL(string: scheme + "://" + host) else {
-            fatalError("Could not create base url from scheme: \(scheme) and host: \(host)")
-        }
-        return result
-    }
-
     var all: URL {
-        return Route.baseURL.appendingPathComponent(self.endpoint)
+        return urlProvider.baseURL.appendingPathComponent(self.endpoint)
     }
 
     subscript(id: Int) -> URL {
