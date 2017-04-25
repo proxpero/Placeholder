@@ -20,7 +20,10 @@ extension Resource {
     init(url: URL, method: HttpMethod<Any> = .get, parseJSON: @escaping (Any) -> A?) {
         self.url = url
         self.method = method.map { json in
-            try! JSONSerialization.data(withJSONObject: json, options: [])
+            // If `json` cannot be transformed into `Data` then it is a programmer
+            // error and the app will crash. Check that the json was formed correctly.
+            let result = try! JSONSerialization.data(withJSONObject: json, options: [])
+            return result
         }
         self.parse = { data in
             let json = try? JSONSerialization.jsonObject(with: data, options: [])
