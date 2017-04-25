@@ -31,6 +31,10 @@ class PlaceholderTests: XCTestCase {
         return json
     }
 
+    func testResource() {
+        
+    }
+
     func testParseSingleUserFromJSON() {
         let sample = json(with: "SingleUser") as! JSONDictionary
         let user = User(json: sample)
@@ -71,13 +75,28 @@ class PlaceholderTests: XCTestCase {
         XCTAssertEqual(albums.count, 100)
     }
 
+
+
     func testFetchUserForUserId() {
 
-        let host = "jsonplaceholder.typicode.com"
+        let url = sampleURL(with: "SingleUser")
+        let userResource = Resource<User>(url: url) { json in
+            guard let dict = json as? JSONDictionary else { return nil }
+            return User(json: dict)
+        }
+
+        class URLSessionMock: NetworkEngine {
+            typealias Handler = NetworkEngine.Handler
+            var url: URL?
+            func request<A>(resource: Resource<A>, handler: @escaping NetworkEngine.Handler) {
+                self.url = resource.url
+            }
+        }
+
         let appExpectation = expectation(description: "Get albums with userId=1")
-        let resource = User.user(withId: 1)
-        guard let webservice = Webservice(host: host) else { XCTFail("Could not create webservice at \(host)"); return }
-        webservice.load(resource) { result in
+
+        let webservice = Webservice(engine: URLSessionMock())
+        webservice.load(userResource).onResult { result in
             if case .success(let user) = result {
                 XCTAssertEqual("Leanne Graham", user.name)
             } else {

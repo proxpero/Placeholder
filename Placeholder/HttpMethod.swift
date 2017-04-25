@@ -23,6 +23,8 @@ extension HttpMethod {
 
 extension HttpMethod {
 
+    /// If the method is a `post` then tranform the body of the post into an `A`
+    /// If the method is a `get` then do nothing.
     public func map<A>(transform: (Body) -> A) -> HttpMethod<A> {
         switch self {
         case .get: return .get
