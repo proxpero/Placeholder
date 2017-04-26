@@ -10,6 +10,8 @@ import Foundation
 
 enum Route: String {
 
+    static var urlProvider: URLProvider?
+
     case users
     case albums
     case photos
@@ -18,6 +20,9 @@ enum Route: String {
     case todos
 
     var all: URL {
+        guard let urlProvider = Route.urlProvider else {
+            fatalError("No url provider")
+        }
         return urlProvider.baseURL.appendingPathComponent(self.endpoint)
     }
 

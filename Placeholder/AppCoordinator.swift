@@ -1,8 +1,6 @@
 
 import UIKit
 
-let urlProvider = URLProvider(host: "jsonplaceholder.typicode.com")
-
 /// A class to encapsulate the logic involved in presenting view controllers
 /// and wiring view models to views. This is nice because it keeps the view
 /// controllers isolated and dumb.
@@ -14,7 +12,13 @@ final class AppCoordinator {
     // The webservice will automatically cache responses it makes on the network.
     private let webservice: CachedWebservice
 
+    // The URL host of the service.
+    private let urlProvider = URLProvider(host: "jsonplaceholder.typicode.com")
+
     init(window: UIWindow) {
+
+        // Set the url info on the `Route`.
+        Route.urlProvider = urlProvider
 
         // Create a cached webservice.
         self.webservice = CachedWebservice(Webservice())

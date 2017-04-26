@@ -75,9 +75,7 @@ class PlaceholderTests: XCTestCase {
         XCTAssertEqual(albums.count, 100)
     }
 
-
-
-    func testFetchUserForUserId() {
+    func testFetchSingleUser() {
 
         let url = sampleURL(with: "SingleUser")
         let userResource = Resource<User>(url: url) { json in
@@ -89,7 +87,7 @@ class PlaceholderTests: XCTestCase {
             typealias Handler = NetworkEngine.Handler
             var url: URL?
             func request<A>(resource: Resource<A>, handler: @escaping NetworkEngine.Handler) {
-                self.url = resource.url
+                return 
             }
         }
 
