@@ -8,7 +8,13 @@ import UIKit
  */
 
 /// Displays an individual user.
-final class UserCell: UITableViewCell {}
+final class UserCell: UITableViewCell {
+    var viewModel: User.ViewModel? {
+        didSet {
+            
+        }
+    }
+}
 
 /// Displays an album.
 final class AlbumCell: UITableViewCell {}

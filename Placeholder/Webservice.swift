@@ -44,6 +44,8 @@ extension URLSession: NetworkEngine {
 
 public final class Webservice {
 
+    static let shared = Webservice()
+
     // The `NetworkEngine` to use for making URLRequests, probably the 
     // URLSession.shared singleton, but possibly a mock during testing.
     private let engine: NetworkEngine

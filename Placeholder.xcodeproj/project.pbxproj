@@ -48,6 +48,8 @@
 		5255E60B1E99E98C009A39B7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E6091E99E76D009A39B7 /* Post.swift */; };
 		5255E60D1E99FE19009A39B7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E60C1E99FE19009A39B7 /* Comment.swift */; };
 		5255E6131E9BDE56009A39B7 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255E6121E9BDE56009A39B7 /* Future.swift */; };
+		527C4AF21EB3BF3C00319CC2 /* Model+CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C4AF11EB3BF3C00319CC2 /* Model+CellConfigurable.swift */; };
+		527C4AF41EB3DF7800319CC2 /* Model+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C4AF31EB3DF7800319CC2 /* Model+ViewModel.swift */; };
 		52F062991EA7A52F000E7606 /* Model+Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F062981EA7A52F000E7606 /* Model+Routing.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,8 @@
 		5255E6091E99E76D009A39B7 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Placeholder/Post.swift; sourceTree = "<group>"; };
 		5255E60C1E99FE19009A39B7 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Placeholder/Comment.swift; sourceTree = "<group>"; };
 		5255E6121E9BDE56009A39B7 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		527C4AF11EB3BF3C00319CC2 /* Model+CellConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+CellConfigurable.swift"; sourceTree = "<group>"; };
+		527C4AF31EB3DF7800319CC2 /* Model+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+ViewModel.swift"; path = "Placeholder/Model+ViewModel.swift"; sourceTree = "<group>"; };
 		52F062981EA7A52F000E7606 /* Model+Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Model+Routing.swift"; path = "Placeholder/Model+Routing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,10 +211,12 @@
 				5255E6091E99E76D009A39B7 /* Post.swift */,
 				5255E60C1E99FE19009A39B7 /* Comment.swift */,
 				5205CF681E967637004B57D1 /* Model+Equatable.swift */,
+				527C4AF11EB3BF3C00319CC2 /* Model+CellConfigurable.swift */,
 				5205CF6A1E967637004B57D1 /* Model+TableViewCell.swift */,
 				5255DD8F1E96B880009A39B7 /* Model+Resource.swift */,
 				52F062981EA7A52F000E7606 /* Model+Routing.swift */,
 				522874BD1EA905C800800877 /* Model+JSONDecodable.swift */,
+				527C4AF31EB3DF7800319CC2 /* Model+ViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527C4AF41EB3DF7800319CC2 /* Model+ViewModel.swift in Sources */,
 				5205CF631E9675AB004B57D1 /* UIKit+Extensions.swift in Sources */,
 				5255E6021E99255A009A39B7 /* FileStorage.swift in Sources */,
 				5205CF811E967C5E004B57D1 /* Resource.swift in Sources */,
@@ -398,6 +405,7 @@
 				5255E6061E99DDD0009A39B7 /* Todo.swift in Sources */,
 				5255E60D1E99FE19009A39B7 /* Comment.swift in Sources */,
 				5205CF6F1E967637004B57D1 /* Model+Equatable.swift in Sources */,
+				527C4AF21EB3BF3C00319CC2 /* Model+CellConfigurable.swift in Sources */,
 				5255E5FC1E986C7E009A39B7 /* CachedWebservice.swift in Sources */,
 				5255E6131E9BDE56009A39B7 /* Future.swift in Sources */,
 				5205CF731E967637004B57D1 /* User.swift in Sources */,

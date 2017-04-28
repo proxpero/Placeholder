@@ -58,7 +58,6 @@ final class UserProfileViewController: UIViewController {
                 let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 30_000, 30_000)
                 mapView.setRegion(region, animated: true)
             }
-
         }
     }
 
