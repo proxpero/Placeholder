@@ -1,6 +1,21 @@
 
 import UIKit
 
+struct CellDescriptor {
+    let cellClass: UITableViewCell.Type
+    let reuseIdentifier: String
+    let configure: (UITableViewCell) -> ()
+
+    init<Cell: UITableViewCell>(reuseIdentifier: String, configure: @escaping (Cell) -> ()) {
+        self.cellClass = Cell.self
+        self.reuseIdentifier = reuseIdentifier
+        self.configure = { cell in
+            // Erase the type. The type signature of the parameter guarantees that `cell` is a `Cell`
+            configure(cell as! Cell)
+        }
+    }
+}
+
 /// A Generic Table View Controller
 final class ItemsViewController<Item, Cell: UITableViewCell>: UITableViewController {
 
@@ -16,8 +31,14 @@ final class ItemsViewController<Item, Cell: UITableViewCell>: UITableViewControl
         }
     }
 
+    let cellDescriptor: (Item) -> CellDescriptor
+
+    private var reuseIdentifiers: Set<String> = []
+
+    /*
     // A callback to configure `Cell` with `Item`.
     let configure: (Cell, Item) -> ()
+    */
 
     // A callback notifying that a row has been selected.
     var didSelect: (Item) -> () = { _ in }
@@ -27,20 +48,10 @@ final class ItemsViewController<Item, Cell: UITableViewCell>: UITableViewControl
 
     // MARK: Initializers.
 
-    // Initialize an `ItemsViewController` with and array of `items`, an optional bar button item, and the callback to configure cells.
-    init(_ items: [Item] = [], navigationItemTitle: String? = nil, configure: @escaping (Cell, Item) -> ()) {
-        self.configure = configure
+    init(items: [Item] = [], navigationItemTitle: String? = nil, cellDescriptor: @escaping (Item) -> CellDescriptor) {
         self.items = items
+        self.cellDescriptor = cellDescriptor
         super.init(style: .plain)
-
-        // If `navigationItemTitle` exists then create a 
-        // UIBarButtonItem with that title and set the selector
-        // to point at `navigationBarButtonTapped` which will 
-        // invoke the `didTapButton` callback.
-        if let navigationItemTitle = navigationItemTitle {
-            let button = UIBarButtonItem(title: navigationItemTitle, style: .plain, target: self, action: #selector(navigationBarButtonTapped))
-            navigationItem.rightBarButtonItem = button
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -74,9 +85,15 @@ final class ItemsViewController<Item, Cell: UITableViewCell>: UITableViewControl
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(Cell.self, at: indexPath)
+//        let cell = tableView.dequeueReusableCell(Cell.self, at: indexPath)
         let item = items[indexPath.row]
-        configure(cell, item)
+        let descriptor = cellDescriptor(item)
+        if !reuseIdentifiers.contains(descriptor.reuseIdentifier) {
+            tableView.register(descriptor.cellClass, forCellReuseIdentifier: descriptor.reuseIdentifier)
+            reuseIdentifiers.insert(descriptor.reuseIdentifier)
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: descriptor.reuseIdentifier, for: indexPath)
+        descriptor.configure(cell)
         return cell
     }
     

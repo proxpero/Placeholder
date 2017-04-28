@@ -10,7 +10,7 @@ final class AppCoordinator {
     var navigationController: UINavigationController!
 
     // The webservice will automatically cache responses it makes on the network.
-    private let webservice: CachedWebservice
+    private let webservice = CachedWebservice.shared
 
     // The URL host of the service.
     private let urlProvider = URLProvider(host: "jsonplaceholder.typicode.com")
@@ -20,12 +20,12 @@ final class AppCoordinator {
         // Set the url info on the `Route`.
         Route.urlProvider = urlProvider
 
-        // Create a cached webservice.
-        self.webservice = CachedWebservice(Webservice())
-
         // Create an ItemsViewController for users.
-        let usersViewController = ItemsViewController() { (cell: UserCell, user: User) in
-            cell.textLabel?.text = user.name
+        let usersViewController = ItemsViewController() { (user: User) in
+            return CellDescriptor(
+                reuseIdentifier: "UserCell",
+                configure: user.configureCell
+            )
         }
 
         // The first screen displays all the users.
@@ -56,8 +56,11 @@ final class AppCoordinator {
 
         // Initialize the view controller with 0 albums, a 'profile' navigation item,
         // and a function to configure the album cells with an album.
-        let albumsViewController = ItemsViewController(navigationItemTitle: "Profile") { (cell: AlbumCell, album: Album) in
-            cell.textLabel?.text = album.title
+        let albumsViewController = ItemsViewController(navigationItemTitle: "Profile") { (album: Album) in
+            return CellDescriptor(
+                reuseIdentifier: "AlbumCell",
+                configure: album.configureCell
+            )
         }
 
         // Set the title.
@@ -105,30 +108,14 @@ final class AppCoordinator {
     /// Show the thumbnails of the selected album in a table view
     func showThumbnails(for album: Album) {
 
-        // This is going to get used a lot so keep a reference here.
-        let placeholder = UIImage.placeholder(with: .lightGray, size: CGSize(width: 44, height: 44))
-
-        func configure(cell: PhotoCell, with photo: Photo) {
-
-            // Set the cell's text label to the the photo's title.
-            cell.textLabel?.text = photo.title
-
-            // Set the cell's image to a placeholder until and image is found.
-            cell.imageView?.image = placeholder
-
-            // Asyncronously load the (possibly cached) image. Update on the 
-            // main queue.
-            webservice.load(photo.thumbnailResource).onResult { result in
-                if case .success(let image) = result {
-                    DispatchQueue.main.async {
-                        cell.imageView?.image = image
-                    }
-                }
-            }
+        // Initialize a table view controller with a cell configuration function.
+        let thumbnailsViewController = ItemsViewController() { (photo: Photo) in
+            return CellDescriptor(
+                reuseIdentifier: "PhotoCell",
+                configure: photo.configureCell
+            )
         }
 
-        // Initialize a table view controller with a cell configuration function.
-        let thumbnailsViewController = ItemsViewController(configure: configure)
         // Set the title.
         thumbnailsViewController.title = album.title
 
