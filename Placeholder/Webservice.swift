@@ -11,7 +11,7 @@ import Foundation
 extension URLRequest {
 
     /// Initialize a URLRequest with a `Resource`.
-    init<A>(resource: Resource<A>) {
+    fileprivate init<A>(resource: Resource<A>) {
         self.init(url: resource.url)
         self.httpMethod = resource.method.method
         if case .post(let data) = resource.method {
@@ -44,6 +44,7 @@ extension URLSession: NetworkEngine {
 
 public final class Webservice {
 
+    /// Shared instance (singleton) of a Webservice.
     static let shared = Webservice()
 
     // The `NetworkEngine` to use for making URLRequests, probably the 

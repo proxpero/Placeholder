@@ -11,6 +11,7 @@ import Foundation
 /// A class to manage the interaction bwtween a `Webservice` and a `cache`.
 public final class CachedWebservice {
 
+    /// Shared instance (singleton) of a CachedWebservice (which uses `Webservice.shared`).
     static let shared = CachedWebservice(Webservice.shared)
 
     private let webservice: Webservice
