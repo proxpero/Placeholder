@@ -27,12 +27,19 @@ public enum WebserviceError: Error {
     case other
 }
 
+/// A protocol intended to abstract `URLSession.shared` so that the
+/// singleton can be mocked during tests.
 public protocol NetworkEngine {
     typealias Handler = (Data?, URLResponse?, Error?) -> ()
+
+    /// A function to request a `Resource` of `A` from the network.
     func request<A>(resource: Resource<A>, handler: @escaping Handler)
+
 }
 
+/// `NetworkEngine` conformance.
 extension URLSession: NetworkEngine {
+
     public typealias Handler = NetworkEngine.Handler
 
     public func request<A>(resource: Resource<A>, handler: @escaping Handler) {

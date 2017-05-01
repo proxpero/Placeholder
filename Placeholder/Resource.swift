@@ -8,10 +8,18 @@
 
 import Foundation
 
+/// A representation of a resource on the internet.
 public struct Resource<A> {
+
+    /// The URL of the resource.
     public let url: URL
+
+    /// The HTTPMethod ('get', 'post', etc.)
     public let method: HttpMethod<Data>
+
+    /// A function to convert the received data to an `A`.
     public let parse: (Data) -> A?
+
 }
 
 extension Resource {

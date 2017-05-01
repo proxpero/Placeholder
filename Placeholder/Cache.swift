@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A class to manage caching `Resource`s.
+/// A class to manage the caching of `Resource`s.
 public final class Cache {
 
     // The private implementation of the cached memory.
